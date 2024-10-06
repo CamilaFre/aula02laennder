@@ -1,20 +1,35 @@
-print("começamos a nossa aula 02")
+
+import pandas as pd
+
+df_pessoas2= pd.read_excel("exemplo.xlsx")
+
+print(df_pessoas2)
 
 lista_de_numeros = [20,8,23,25,7,50,10,28,17,28,15,54,37]
 lista_de_numeros2 = [20,8,23,25,7,50,10]
 lista_de_numeros3 = [4,5,6]
-def calcular_media (lista_para_somar: list) -> float:
-    soma = 0
-    for item in lista_para_somar:
-        soma = soma + item
-    media_da_lista = soma/len(lista_para_somar)
 
-    return media_da_lista
+lista_tipo_series = pd.Series(lista_de_numeros)
+print(lista_tipo_series.describe())
 
-media_1 = calcular_media(lista_de_numeros)
-media_2 = calcular_media(lista_de_numeros2)
-media_3 = calcular_media(lista_de_numeros3)
+print(type(lista_de_numeros))
+print(type(lista_tipo_series))
 
-print(media_1)
-print(media_2)
-print(media_3)
+# %%
+
+print(lista_tipo_series.median())
+print(lista_tipo_series.mode())
+print(lista_tipo_series.mean())
+print(lista_tipo_series.std())
+print(lista_tipo_series.max())
+print(lista_tipo_series.min())
+
+forma = lista_tipo_series.shape[0]
+print(f"Forma da Série:{forma}")
+
+serie_nomes = pd.Series(["Ana", "Bruno","Carla","David"])
+serie_sobrenomes = pd.Series(["Silva", "Oliveira","Santos","Costa"])
+serie_idades = pd.Series([23,29,31,25])
+df_pessoas = pd.DataFrame({"nome":serie_nomes, "sobrenome":serie_sobrenomes,"idade":serie_idades})
+print(df_pessoas)
+print(df_pessoas["idade"].median())
